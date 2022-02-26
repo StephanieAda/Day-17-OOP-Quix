@@ -4,8 +4,8 @@ from quiz_brain import Quiz
 
 question_bank = []
 for i in question_data:
-    question_text = i['text']
-    question_answer = i['answer']
+    question_text = i["question"]
+    question_answer = i["correct_answer"]
     question_add = Question(question_text, question_answer)
     question_bank.append(question_add)
 
@@ -14,4 +14,6 @@ for i in question_data:
 
 question = Quiz(question_bank)
 # okay = question.question_list['text']
-question.next_question()
+while question.still_has_questions():
+    question.next_question()
+question.end_of_game()
